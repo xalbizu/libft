@@ -6,7 +6,7 @@
 /*   By: xalbizu- <xalbizu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 11:19:58 by xalbizu-          #+#    #+#             */
-/*   Updated: 2022/03/30 17:36:48 by xalbizu-         ###   ########.fr       */
+/*   Updated: 2022/04/01 15:03:16 by xalbizu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stddef.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 int		ft_isdigit(int n);
 int		ft_toupper(int ch);
@@ -39,5 +40,9 @@ void	*ft_calloc(size_t nitems, size_t size);
 void	ft_bzero(void *s, size_t n);
 int		ft_atoi(const char *str);
 char	*ft_strdup(const char *str);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
+char	**ft_split(char const *s, char c);
 
 #endif
