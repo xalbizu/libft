@@ -17,28 +17,35 @@ char    *ft_itoa(int n)
     char    *str;
     int digits;
     int auxnum;
+    int neg;
 
+    neg = 0;
     auxnum = n;
     digits = 1;
+    if (n < 0)
+    {
+        digits++;
+        str = ft_calloc(12, sizeof(str));
+        str[0] = '-';
+        n = n* -1 ;
+        neg = 1;
+    }
+    else
+        str = ft_calloc(11, sizeof(str));
     while (auxnum / 10)
     {
         auxnum = auxnum / 10;
         digits++;
     }
-    if (n < 0)
+    str[digits] = '\0';
+    while ((digits > 0 && neg == 0) || (digits > 1 && neg == 1))
     {
-        digits++;
-        str[0] = '-';
-    }
-    printf("%d",digits);
-    while (digits > 0)
-    {
-        
-        str[digits] = n % 10;
-        n = n / 10; /*EL ERROR ESTA AQUI, NO SE PORQUE A PARTIR DE AQUI NO HACE NADA MAS*/
-        printf("%d",n);
+        str[digits - 1] = (n % 10) + '0';
+        printf("NUM %d  %c \n",digits-1,str[digits - 1]);
+        n = n / 10;
         digits--;
     }
+    
     return (str);
 }
 
