@@ -31,7 +31,8 @@ char	**ft_split(char const *s, char c)
 		if (s[i] == c || i == 0)
 		{
 			if (i != 0 || s[0] == c)
-				i++;
+				while (s[i] == c && s[i])
+					i++;
 			arr[j] = (char *)malloc(wordletters(&s[i], c) * sizeof(char));
 			while (s[i] != c && s[i])
 			{
@@ -75,25 +76,27 @@ int numberofwords(char const *str, char c)
 	i = 0;
 	num = 1;
 	aux = ft_strtrim(str, caux);
+	if (ft_strlen(aux) == 0)
+		return (0);
 	while (aux[i])
 	{
-		if(aux[i] == c)
+		if(aux[i] == c && aux[i + 1] && aux[i + 1] != c)
 			num++;
 		i++;
 	}
 	free(caux);
 	return (num);
 }
-/*
-int main()
+
+/*int main()
 {
-	char str[] = "Hola que tal estas";
+	char str[] = "";
 	char **strf;
 	int i;
 	int j;
 	j = 0;
 	i = 0;
-	strf = ft_split(str, ' ');
+	strf = ft_split(str, 'z');
 	while (strf[i])
 	{
 		while (strf[i][j])

@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" /*--------------INCLUIR UNISTD.H CUANDO ESTES EN UN MAC DE 42----------------*/
+#include "libft.h"
+#include <unistd.h>
 
 void    ft_putchar_fd(char c, int fd)
 {

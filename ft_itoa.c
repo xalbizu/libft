@@ -48,8 +48,3 @@ char    *ft_itoa(int n)
     
     return (str);
 }
-
-int main()
-{
-    printf("El string es: %s",ft_itoa(123));
-}
