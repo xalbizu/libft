@@ -25,7 +25,7 @@ char	**ft_split(char const *s, char c)
 	k = 0;
 	i = 0;
 	j = 0;
-	arr = (char **)malloc(numberofwords(s, c) * sizeof(char*));
+	arr = (char **)malloc(numberofwords(s, c) * sizeof(char*) + 1);
 	while (s[i])
 	{
 		if (s[i] == c || i == 0)
@@ -84,8 +84,8 @@ int numberofwords(char const *str, char c)
 	free(caux);
 	return (num);
 }
-
-/*int main()
+/*
+int main()
 {
 	char str[] = "Hola que tal estas";
 	char **strf;
