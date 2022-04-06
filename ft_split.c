@@ -13,6 +13,7 @@
 #include"libft.h"
 
 int numberofwords(char const *str, char c);
+int wordletters(char const *str, char c);
 
 char	**ft_split(char const *s, char c)
 {
@@ -24,19 +25,16 @@ char	**ft_split(char const *s, char c)
 	k = 0;
 	i = 0;
 	j = 0;
-	
-	arr = (char **)malloc(); /*poner el numero de palabras que haya y en el otro malloc el numero de letras de cada palabra*/
-	
+	arr = (char **)malloc(numberofwords(s, c) * sizeof(char*));
 	while (s[i])
 	{
 		if (s[i] == c || i == 0)
 		{
-			if (i != 0)
+			if (i != 0 || s[0] == c)
 				i++;
-			arr[j] = (char *)malloc(100);
+			arr[j] = (char *)malloc(wordletters(&s[i], c) * sizeof(char));
 			while (s[i] != c && s[i])
 			{
-				
 				arr[j][k] = s[i];
 				i++;
 				k++;
@@ -48,24 +46,55 @@ char	**ft_split(char const *s, char c)
 		else
 			i++;
 	}
+	arr[numberofwords(s,c)] = 0;
 	return (arr);
+}
+
+int wordletters(char const *str, char c)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] != c && str[i])
+	{
+		i++;
+	}
+	return(i);
 }
 
 int numberofwords(char const *str, char c)
 {
+	char *aux;
+	char *caux;
+	size_t	i;
+	int num;
 	
+	caux = malloc(2);
+	caux[0] = c;
+	caux[1] = '\0';
+	i = 0;
+	num = 1;
+	aux = ft_strtrim(str, caux);
+	while (aux[i])
+	{
+		if(aux[i] == c)
+			num++;
+		i++;
+	}
+	free(caux);
+	return (num);
 }
 
-int main()
+/*int main()
 {
-	char str[] = "     Hola que tal estas    ";
+	char str[] = "Hola que tal estas";
 	char **strf;
 	int i;
 	int j;
 	j = 0;
 	i = 0;
 	strf = ft_split(str, ' ');
-	while (*strf[i])
+	while (strf[i])
 	{
 		while (strf[i][j])
 		{
@@ -74,9 +103,8 @@ int main()
 		}
 		j = 0;
 		printf("\n");
+		free(strf[i]);
 		i++;
 	}
-	i = 0;
-	j = 10;
 	free(strf);
-}
+}*/
