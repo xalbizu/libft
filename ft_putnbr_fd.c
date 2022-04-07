@@ -20,7 +20,7 @@ void    ft_putnbr_fd(int n, int fd)
     if (aux < 0)
     {
         aux *= -1;
-        write(fd, '-', 1);
+        write(fd, "-", 1);
     }
     while (aux / 10)
     {

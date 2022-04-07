@@ -41,7 +41,6 @@ char    *ft_itoa(int n)
     while ((digits > 0 && neg == 0) || (digits > 1 && neg == 1))
     {
         str[digits - 1] = (n % 10) + '0';
-        printf("NUM %d  %c \n",digits-1,str[digits - 1]);
         n = n / 10;
         digits--;
     }
