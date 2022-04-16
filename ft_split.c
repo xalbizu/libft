@@ -6,7 +6,7 @@
 /*   By: xalbizu- <xalbizu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:02:32 by xalbizu-          #+#    #+#             */
-/*   Updated: 2022/04/16 12:56:13 by xalbizu-         ###   ########.fr       */
+/*   Updated: 2022/04/16 18:15:54 by xalbizu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,27 @@ int	wordletters(char const *str, char c);
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 	size_t	k;
 
 	k = 0;
-	i = 0;
-	j = 0;
-	arr = (char **)malloc((numberofwords(s, c) + 1) * sizeof(char *));
-	if (!arr || sizeof(arr) == 0 || !s)
+	i = -1;
+	j = -1;
+	if (!s)
 		return (NULL);
-	while (s[i])
+	arr = (char **)malloc((numberofwords(s, c) + 1) * sizeof(char *));
+	if (!arr)
+		return (NULL);
+	while (s[++i])
 	{
 		if (((s[i] == c || i == 0) && s[i + 1] && s[i + 1] != c))
 		{
 			if (i != 0 || (i == 0 && s[i] == c))
-				arr[j] = ft_substr(s, i + 1, wordletters(&s[i + 1], c));
+				arr[++j] = ft_substr(s, i + 1, wordletters(&s[i + 1], c));
 			else
-				arr[j] = ft_substr(s, i, wordletters(&s[i], c));
-			j++;
+				arr[++j] = ft_substr(s, i, wordletters(&s[i], c));
 		}
-		i++;
 	}
 	arr[numberofwords(s, c)] = 0;
 	return (arr);
