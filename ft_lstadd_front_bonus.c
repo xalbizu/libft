@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xalbizu- <xalbizu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 16:22:17 by xalbizu-          #+#    #+#             */
-/*   Updated: 2022/04/15 17:41:40 by xalbizu-         ###   ########.fr       */
+/*   Created: 2022/04/16 09:08:11 by xalbizu-          #+#    #+#             */
+/*   Updated: 2022/04/16 09:12:04 by xalbizu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *str, int c, size_t n)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t			count;
-	unsigned char	*result;
-	unsigned char	ch;
-
-	ch = (unsigned char)c;
-	count = 0;
-	result = (unsigned char *)str;
-	while (count < n)
+	if (lst && new)
 	{
-		if (result[count] == ch)
-		{
-			return (&result[count]);
-		}
-		count++;
+		new -> next = *lst;
+		*lst = new;
 	}
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: xalbizu- <xalbizu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:13:54 by xalbizu-          #+#    #+#             */
-/*   Updated: 2022/03/30 13:00:40 by xalbizu-         ###   ########.fr       */
+/*   Updated: 2022/04/16 11:09:57 by xalbizu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,13 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	str2 = (char *)src;
 	str1 = dest;
 	count = 0;
-	while (count < n)
+	if (dest || src)
 	{
-		str1[count] = str2[count];
-		count++;
+		while (count < n)
+		{
+			str1[count] = str2[count];
+			count++;
+		}
 	}
 	return (dest);
 }

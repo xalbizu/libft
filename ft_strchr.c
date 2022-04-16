@@ -6,26 +6,28 @@
 /*   By: xalbizu- <xalbizu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 13:54:49 by xalbizu-          #+#    #+#             */
-/*   Updated: 2022/03/31 13:46:42 by xalbizu-         ###   ########.fr       */
+/*   Updated: 2022/04/15 17:30:42 by xalbizu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strchr(const char *str, int c)
 {
-	int		count;
-	char	*result;
+	unsigned int		count;
+	char				*result;
+	unsigned char		ch;
 
 	count = 0;
+	ch = (unsigned char)c;
 	while (str[count])
 	{
-		if (str[count] == c)
+		if (str[count] == ch)
 		{
 			result = (char *)str;
 			return (&result[count]);
 		}
 		count++;
 	}
-	if (str[count] == c)
+	if (str[count] == ch)
 	{
 		result = (char *)str;
 		return (&result[count]);
