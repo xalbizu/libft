@@ -20,9 +20,7 @@ char	**ft_split(char const *s, char c)
 	char	**arr;
 	int		i;
 	int		j;
-	size_t	k;
 
-	k = 0;
 	i = -1;
 	j = -1;
 	if (!s)
@@ -32,7 +30,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	while (s[++i])
 	{
-		if (((s[i] == c || i == 0) && s[i + 1] && s[i + 1] != c))
+		if (((s[i] == c && s[i + 1] && s[i + 1] != c) || i == 0) )
 		{
 			if (i != 0 || (i == 0 && s[i] == c))
 				arr[++j] = ft_substr(s, i + 1, wordletters(&s[i + 1], c));
