@@ -6,7 +6,7 @@
 /*   By: xalbizu- <xalbizu-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:02:32 by xalbizu-          #+#    #+#             */
-/*   Updated: 2022/04/16 18:15:54 by xalbizu-         ###   ########.fr       */
+/*   Updated: 2022/04/25 17:39:20 by xalbizu-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,27 @@ char	**ft_split(char const *s, char c)
 	char	**arr;
 	int		i;
 	int		j;
+	int		start;
 
 	i = -1;
-	j = -1;
+	j = 0;
+	start = -1;
 	if (!s)
 		return (NULL);
 	arr = (char **)malloc((numberofwords(s, c) + 1) * sizeof(char *));
-	if (!arr)
+	if (!arr || sizeof(arr) == 0)
 		return (NULL);
-	while (s[++i])
+	while (++i <= (int)ft_strlen(s))
 	{
-		if (((s[i] == c && s[i + 1] && s[i + 1] != c) || i == 0) )
+		if (s[i] != c && start < 0)
+			start = i;
+		else if (start >= 0 && (s[i] == c || i == (int)ft_strlen(s)))
 		{
-			if (i != 0 || (i == 0 && s[i] == c))
-				arr[++j] = ft_substr(s, i + 1, wordletters(&s[i + 1], c));
-			else
-				arr[++j] = ft_substr(s, i, wordletters(&s[i], c));
+			arr[j++] = ft_substr(s, start, i - start);
+			start = -1;
 		}
 	}
-	arr[numberofwords(s, c)] = 0;
+	arr[numberofwords(s, c)] = NULL;
 	return (arr);
 }
 
@@ -81,3 +83,21 @@ int	numberofwords(char const *str, char c)
 	free(aux);
 	return (num);
 }
+
+/* int main(void)
+{
+	char	**tab;
+	int	i,j;
+
+	i = 0;
+	j = 0;
+	tab = ft_split("^^^1^^2a,^^^^3^^^^--h^^^^", '^');
+
+	while (tab[i])
+	{
+		printf("%s",tab[i]);
+		printf("\n");
+		i++;
+	}
+	printf("%s",tab[4]);
+} */
